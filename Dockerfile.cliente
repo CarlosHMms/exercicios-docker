@@ -1,9 +1,8 @@
 FROM ubuntu:latest
 
-# Abrindo a porta 67 para o DHCP
+# Instalando o cliente DHCP e o utilitário net-tools (para o comando ifconfig)
 RUN apt-get update && apt-get install -y isc-dhcp-client
 RUN apt install net-tools -y
 
-EXPOSE 67/udp
-
-
+# Fazendo uma requisição de IP para o servidor DHCP (eth0 é a interface de rede do container)
+CMD [ "dhclient", "-v", "eth0"]
