@@ -32,5 +32,16 @@ sh criar-ambiente.sh
 Foram executados alguns testes para verificar se os micro serviços fornecem o que estão sendo propostos a fazer. Estes testes serão detalhados abaixo:
 
 - Teste do Serviço DHCP
+
+  Foi executado utilizando o conteiner Cliente um teste de requisição, onde o conteiner cliente realiza uma requisição de ip ao servidor dhcp através do comando `dhclient -v eth0`. Após a requisição acessamos o arquivo **dhcp.leases** e verificamos que o servidor dhcp recebeu e processou a requisição.
+  ![teste-dhcp](testes/teste-dhcp.png)
+
 - Teste do Serviço DNS
+
+  Para testar o servidor **DNS** foi executado o comando `dig {dominio}@{ip_do_container_dns}` e então vemos que o cliente consegue fazer pesquisas por nome de domínio.
+  ![teste-dns](testes/teste-dns.png)
+
 - Teste do Firewall
+
+  Para testar o firewall apenas testamos se a regra de bloqueio da porta 80 está funcionando, realizando apenas um `wget google.com` e verificar se ele irá conseguir fazer ou não a requisição na porta 80.
+  ![teste-firewall](testes/teste-firewall.png)
